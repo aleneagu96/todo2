@@ -8,7 +8,6 @@ const StyledButton = styled(Button)({
   height: 55,
   width: 130,
   padding: 2,
-
 });
 
 function ButtonComponent({ onClick, label }) {
