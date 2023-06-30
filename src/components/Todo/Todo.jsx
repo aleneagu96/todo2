@@ -4,10 +4,9 @@ import { makeStyles } from '@mui/styles';
 import DeleteIcon from '@mui/icons-material/Delete';
 import IconButton from '@mui/material/IconButton';
 import EditIcon from '@mui/icons-material/Edit';
-import CustomModal from '../Modal/CustomModal';
 import { TaskAlt } from '@mui/icons-material';
 
-function Todo({ index, date, text, onUpdateText, onDeleteTodo }) {
+function Todo({ index, date, text, onUpdateText, DeleteTodo, openModal }) {
   const useStyles = makeStyles((theme) => ({
     todoStyle: {
       display: 'flex',
@@ -48,32 +47,13 @@ function Todo({ index, date, text, onUpdateText, onDeleteTodo }) {
     },
   }));
 
-  const [modalOpen, setModalOpen] = useState(false);
-  const [editedText, setEditedText] = useState(text);
+
   const [editedDate, setEditedDate] = useState(date); 
 
 
-  const handleOpenModal = () => {
-    setModalOpen(true);
-  };
 
-  const handleCloseModal = () => {
-    setModalOpen(false);
-  };
 
-  const handleTextChange = (e) => {
-    setEditedText(e.target.value);
-  };
-
-  const handleSave = () => {
-    onUpdateText(index, editedText);
-    setEditedDate( new Date().toLocaleString()); 
-    handleCloseModal();
-  };
-
-  const deleteTodo = () => {
-    onDeleteTodo(index);
-  };
+  
 
   const handleDone = () => {
     onDeleteTodo(index);
@@ -102,24 +82,16 @@ function Todo({ index, date, text, onUpdateText, onDeleteTodo }) {
             </Typography>
           </div>
           <div>
-            <IconButton aria-label="edit" onClick={handleOpenModal}>
+            <IconButton aria-label="edit" onClick={() => openModal()}>
               <EditIcon />
             </IconButton>
-            <IconButton aria-label="delete" onClick={deleteTodo}>
+            <IconButton aria-label="delete" onClick={() =>DeleteTodo()}>
               <DeleteIcon />
             </IconButton>
           </div>
         </div>
       </CardContent>
-      {modalOpen && (
-        <CustomModal
-          text={editedText}
-          handleTextChange={handleTextChange}
-          handleSave={handleSave}
-          handleClose={handleCloseModal}
-          deleteTodo={onDeleteTodo}
-        />
-      )}
+ 
     </Card>
   );
 }
