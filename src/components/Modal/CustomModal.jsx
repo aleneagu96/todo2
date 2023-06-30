@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@mui/styles';
 import { Modal, Typography, Button, TextField } from '@mui/material';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 
-function CustomModal({ text, handleTextChange, handleSave, handleClose, deleteTodo }) {
+function CustomModal({ text, handleTextChange, handleSave, handleClose, open }) {
   const useStyles = makeStyles((theme) => ({
     modalStyle: {
       position: 'fixed',
@@ -76,9 +76,13 @@ function CustomModal({ text, handleTextChange, handleSave, handleClose, deleteTo
     handleClose();
   };
 
+  useEffect(() => {
+    console.log('text: ', text);
+  }, [text])
+
   return (
     <div>
-      <Modal open={true} onClose={handleCloseModal}>
+      <Modal open={open} onClose={handleCloseModal}>
         <div className={classes.modalStyle}>
           <IconButton aria-label="close" className={classes.closeButton} onClick={handleCloseModal}>
             <CloseIcon />
@@ -93,7 +97,7 @@ function CustomModal({ text, handleTextChange, handleSave, handleClose, deleteTo
               className={classes.inputStyle}
               label="Edit Task"
               value={text}
-              onChange={handleTextChange}
+              onChange={(e) => handleTextChange(e.target.value)}
               autoFocus
             />
           </div>
@@ -112,10 +116,7 @@ function CustomModal({ text, handleTextChange, handleSave, handleClose, deleteTo
                 color="primary"
                 variant="contained"
                 size="small"
-                onClick={() => {
-                  handleSave();
-                  deleteTodo();
-                }}
+                onClick={handleSave}
                 style={{ marginLeft: 20 }}
               >
                 Save

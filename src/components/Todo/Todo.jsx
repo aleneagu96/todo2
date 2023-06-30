@@ -6,7 +6,7 @@ import IconButton from '@mui/material/IconButton';
 import EditIcon from '@mui/icons-material/Edit';
 import { TaskAlt } from '@mui/icons-material';
 
-function Todo({ index, date, text, onUpdateText, DeleteTodo, openModal }) {
+function Todo({ index, date, text, DeleteTodo, openModal }) {
   const useStyles = makeStyles((theme) => ({
     todoStyle: {
       display: 'flex',
@@ -48,12 +48,6 @@ function Todo({ index, date, text, onUpdateText, DeleteTodo, openModal }) {
   }));
 
 
-  const [editedDate, setEditedDate] = useState(date); 
-
-
-
-
-  
 
   const handleDone = () => {
     onDeleteTodo(index);
@@ -78,7 +72,7 @@ function Todo({ index, date, text, onUpdateText, DeleteTodo, openModal }) {
           </div>
           <div style={{ marginLeft: 'auto' }}>
             <Typography variant="subtitle2" className={classes.dateStyle}>
-              {editedDate}
+              {date}
             </Typography>
           </div>
           <div>
