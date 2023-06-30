@@ -85,15 +85,9 @@ function List() {
     setTodos(update);
   };
 
-  const handleDeleteTodo = (index) => {
-    setTodos((prevTodos) => {
-      const updatedTodos = prevTodos.filter((todo) => todo.index !== index);
-      const updatedTodosWithIndexes = updatedTodos.map((todo, newIndex) => ({
-        ...todo,
-        index: newIndex + 1,
-      }));
-      return updatedTodosWithIndexes;
-    });
+  const handleDeleteTodo = () => {
+    const update = todos.filter((todo, index) => index !== currentTodo);
+    setTodos(update);
   };
 
   return (
