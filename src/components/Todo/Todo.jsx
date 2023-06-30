@@ -51,7 +51,6 @@ function Todo({ index, date, text, onUpdateText, onDeleteTodo }) {
   const [modalOpen, setModalOpen] = useState(false);
   const [editedText, setEditedText] = useState(text);
   const [editedDate, setEditedDate] = useState(date); 
-  const [isCompleted, setIsCompleted] = useState(false);
 
 
   const handleOpenModal = () => {
