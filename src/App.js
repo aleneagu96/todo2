@@ -9,7 +9,7 @@ function App() {
   const useStyles= makeStyles((theme) => ({
     appStyle:{
       backgroundColor: '#f2f5f3',
-      minHeight:700,
+      height:700,
     
     },
   }));
