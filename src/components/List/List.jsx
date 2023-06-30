@@ -35,11 +35,7 @@ function List() {
 
   const classes =useStyles();
 
-  const [todos, setTodos] = useState([]);
-
-  useEffect(() => {
-    setTodos(initialData);
-  }, []);
+  const [todos, setTodos] = useState(initialData);
 
   const handleAddTodo = (todoText) => {
     const newTodo = {
