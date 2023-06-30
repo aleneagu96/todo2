@@ -6,7 +6,7 @@ import IconButton from "@mui/material/IconButton";
 import EditIcon from "@mui/icons-material/Edit";
 import { TaskAlt } from "@mui/icons-material";
 
-function Todo({ index, date, text, onDeleteTodo, openModal }) {
+function Todo({ labelNumber, date, text, onDeleteTodo, openModal }) {
   const useStyles = makeStyles((theme) => ({
     todoStyle: {
       display: "flex",
@@ -62,7 +62,7 @@ function Todo({ index, date, text, onDeleteTodo, openModal }) {
           </IconButton>
           <div>
             <Typography variant="subtitle2" className={classes.indexStyle}>
-              TODO # {index}
+              TODO # {labelNumber + 1}
             </Typography>
             <div className={classes.textWrapper}>
               <Typography variant="body1">{text}</Typography>

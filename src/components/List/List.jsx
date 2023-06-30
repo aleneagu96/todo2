@@ -102,6 +102,7 @@ function List() {
           todos.map((todo, index) => (
             <Todo
               key={index}
+              labelNumber={index}
               date={todo.date}
               text={todo.text}
               onDeleteTodo={handleDeleteTodo}
