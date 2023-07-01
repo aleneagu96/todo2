@@ -1,20 +1,21 @@
 import React, { useState } from "react";
-import { Divider, Card, CardContent, Typography, Button } from "@mui/material";
+import { Divider, Card, CardContent, Typography, Button, Accordion } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import DeleteIcon from "@mui/icons-material/Delete";
 import IconButton from "@mui/material/IconButton";
 import EditIcon from "@mui/icons-material/Edit";
 import { TaskAlt } from "@mui/icons-material";
+import Subtask from "../Subtask/Subtask";
 
-function Todo({ labelNumber, date, text, prio, onDeleteTodo, openModal }) {
+function Todo({ labelNumber, date, text, prio, onDeleteTodo, openModal, subtasks, handleAccordion }) {
   const useStyles = makeStyles((theme) => ({
     todoStyle: {
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
-      width: 610,
+      width: 600,
       paddingTop: 8,
-      height: 66,
+      // height: 66,
       marginTop: 16,
       margin: "auto",
       border: "solid 1px #bfc9c2",
@@ -80,6 +81,8 @@ function Todo({ labelNumber, date, text, prio, onDeleteTodo, openModal }) {
             </IconButton>
           </div>
         </div>
+        <br></br>
+        <Subtask onClick={handleAccordion}>{subtasks}</Subtask>
       </CardContent>
     </Card>
   );

@@ -6,6 +6,7 @@ import initialData from "../initialData";
 import { Typography } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import CustomModal from "../Modal/CustomModal";
+import Subtask from "../Subtask/Subtask";
 
 function List() {
   const useStyles = makeStyles((theme) => ({
@@ -20,7 +21,7 @@ function List() {
       marginTop: 20,
       backgroundColor: "white",
       width: 650,
-      height: 600,
+      // height: 600,
       border: "solid 1px #f2f5f3",
       boxShadow: 10,
       borderRadius: 5,
@@ -114,6 +115,11 @@ function List() {
     decreasePrio(currentTodo,editedPrio);
   }
 
+  const handleAccordion = (newIndex) => {
+    setOpen(true);
+    setCurrentTodo(newIndex);
+  }
+
   return (
     <div className={classes.listStyle}>
       <Typography variant="h4" style={{ marginLeft: 200, color: "#3d424f" }}>
@@ -130,8 +136,10 @@ function List() {
               date={todo.date}
               text={todo.text}
               prio={todo.prio}
+              subtasks={todo.subTasks}
               onDeleteTodo={handleDeleteTodo}
               openModal={() => handleOpenModal(index)}
+              handleClick={() => handleAccordion(todos.index)}
             />
           ))
         ) : (
