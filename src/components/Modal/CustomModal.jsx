@@ -3,6 +3,8 @@ import { makeStyles } from "@mui/styles";
 import { Modal, Typography, Button, TextField } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
+import RemoveIcon from '@mui/icons-material/Remove';
+import AddIcon from '@mui/icons-material/Add'
 
 function CustomModal({
   text,
@@ -10,6 +12,10 @@ function CustomModal({
   handleSave,
   handleClose,
   open,
+  prio,
+  increasePrio,
+  decreasePrio
+  
 }) {
   const useStyles = makeStyles((theme) => ({
     modalStyle: {
@@ -73,6 +79,17 @@ function CustomModal({
       width: 300,
       borderRadius: "0 !important",
     },
+
+    prioritySt: {
+      display: 'flex',
+    },
+
+    prioStyle: {
+      border: 'solid 1px grey !important',
+      width: 25,
+      alignSelf: 'center',
+      paddingLeft: 12,
+    }
   }));
 
   const classes = useStyles();
@@ -105,6 +122,26 @@ function CustomModal({
               onChange={(e) => handleTextChange(e.target.value)}
               autoFocus
             />
+          </div>
+          <br></br>
+          <div className={classes.prioritySt}>
+            <IconButton
+              aria-label="remove"
+              className={classes.removeButton}
+              onClick={decreasePrio}
+            >
+              <RemoveIcon />
+            </IconButton>
+            <Typography
+              className={classes.prioStyle}
+            >{prio}</Typography>
+            <IconButton
+              aria-label="add"
+              className={classes.addButton}
+              onClick={increasePrio}
+            >
+              <AddIcon />
+            </IconButton>
           </div>
           <div className={classes.buttonsDiv}>
             <div className={classes.buttonsContainer}>

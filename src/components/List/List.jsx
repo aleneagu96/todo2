@@ -38,6 +38,7 @@ function List() {
   const [editedText, setEditedText] = useState("");
   const [currentTodo, setCurrentTodo] = useState(0);
   const [editedDate, setEditedDate] = useState(new Date());
+  const [editedPrio, setEditedPrio] = useState(1);
 
   const handleOpenModal = (currentIndex) => {
     setCurrentTodo(currentIndex);
@@ -45,9 +46,6 @@ function List() {
     setModalOpen(true);
   };
 
-  const handleTextChange = (e) => {
-    setEditedText(e.target.value);
-  };
 
   const handleCloseModal = () => {
     setModalOpen(false);
@@ -62,9 +60,11 @@ function List() {
     setEditedDate(new Date().toLocaleString());
     handleCloseModal();
   };
+
   const handleAddTodo = (todoText) => {
     const newTodo = {
       text: todoText,
+      prio: 1,
       index: todos.length + 1,
       date: new Date().toLocaleString(),
     };
@@ -90,6 +90,30 @@ function List() {
     setTodos(update);
   };
 
+  const increasePrio = (newIndex, updatedPrio) => {
+    const update = todos.map((todo, index) => 
+      index === newIndex ? 
+      {...todo, prio: updatedPrio+1} : todo);
+      setEditedPrio(updatedPrio +1);
+      setTodos(update);
+  }
+
+  const decreasePrio = (newIndex, updatedPrio) => {
+    const update = todos.map((todo, index) => 
+      index === newIndex ? 
+      {...todo, prio: updatedPrio-1} : todo);
+      setEditedPrio(updatedPrio -1);
+      setTodos(update);
+  }
+ 
+  const handlePrioIncrease =() => {
+    increasePrio(currentTodo,editedPrio);
+  }
+
+  const handlePrioDecrease =() => {
+    decreasePrio(currentTodo,editedPrio);
+  }
+
   return (
     <div className={classes.listStyle}>
       <Typography variant="h4" style={{ marginLeft: 200, color: "#3d424f" }}>
@@ -105,6 +129,7 @@ function List() {
               labelNumber={index}
               date={todo.date}
               text={todo.text}
+              prio={todo.prio}
               onDeleteTodo={handleDeleteTodo}
               openModal={() => handleOpenModal(index)}
             />
@@ -122,6 +147,9 @@ function List() {
         handleClose={handleCloseModal}
         open={modalOpen}
         text={editedText}
+        prio={editedPrio}  
+        increasePrio={handlePrioIncrease}    
+        decreasePrio={handlePrioDecrease}
       />
     </div>
   );

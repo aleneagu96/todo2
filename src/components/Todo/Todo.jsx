@@ -6,7 +6,7 @@ import IconButton from "@mui/material/IconButton";
 import EditIcon from "@mui/icons-material/Edit";
 import { TaskAlt } from "@mui/icons-material";
 
-function Todo({ labelNumber, date, text, onDeleteTodo, openModal }) {
+function Todo({ labelNumber, date, text, prio, onDeleteTodo, openModal }) {
   const useStyles = makeStyles((theme) => ({
     todoStyle: {
       display: "flex",
@@ -47,9 +47,7 @@ function Todo({ labelNumber, date, text, onDeleteTodo, openModal }) {
     },
   }));
 
-  const handleDone = () => {
-    onDeleteTodo(index);
-  };
+ 
 
   const classes = useStyles();
 
@@ -57,12 +55,12 @@ function Todo({ labelNumber, date, text, onDeleteTodo, openModal }) {
     <Card className={classes.todoStyle}>
       <CardContent>
         <div style={{ display: "flex", alignItems: "center" }}>
-          <IconButton aria-label="taskAlt" onClick={handleDone}>
+          <IconButton aria-label="taskAlt" onClick={onDeleteTodo}>
             <TaskAlt />
           </IconButton>
           <div>
             <Typography variant="subtitle2" className={classes.indexStyle}>
-              TODO # {labelNumber + 1}
+              TODO # {labelNumber + 1} PRIO {prio}
             </Typography>
             <div className={classes.textWrapper}>
               <Typography variant="body1">{text}</Typography>
