@@ -44,7 +44,9 @@ function List() {
   const handleOpenModal = (currentIndex) => {
     setCurrentTodo(currentIndex);
     setEditedText(todos[currentIndex].text);
+    setEditedPrio(todos[currentIndex].prio);
     setModalOpen(true);
+    
   };
 
 
@@ -60,6 +62,7 @@ function List() {
     handleUpdateText(currentTodo, editedText);
     setEditedDate(new Date().toLocaleString());
     handleCloseModal();
+    
   };
 
   const handleAddTodo = (todoText) => {

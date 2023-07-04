@@ -6,7 +6,7 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
-function Subtask (subtasks, handleAccordion) {
+function Subtask () {
     
 
     const useStyles = makeStyles((theme) => ({
@@ -34,8 +34,10 @@ function Subtask (subtasks, handleAccordion) {
                 <div className={classes.test}>
                 <AccordionDetails>
                     {/* replace with actual subtasks */}
-                    <Typography variant="subtitle2">{}</Typography>
+                    <Typography variant="subtitle2">Subtask 1</Typography>
                     <Typography variant="subtitle2">Subtask 2</Typography>
+                    <Typography variant="subtitle2">Subtask 3</Typography>
+
 
                 </AccordionDetails>
                 </div>

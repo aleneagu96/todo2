@@ -7,7 +7,7 @@ import EditIcon from "@mui/icons-material/Edit";
 import { TaskAlt } from "@mui/icons-material";
 import Subtask from "../Subtask/Subtask";
 
-function Todo({ labelNumber, date, text, prio, onDeleteTodo, openModal, subtasks, handleAccordion }) {
+function Todo({ labelNumber, date, text, prio, onDeleteTodo, openModal}) {
   const useStyles = makeStyles((theme) => ({
     todoStyle: {
       display: "flex",
@@ -82,7 +82,7 @@ function Todo({ labelNumber, date, text, prio, onDeleteTodo, openModal, subtasks
           </div>
         </div>
         <br></br>
-        <Subtask onClick={handleAccordion}>{subtasks}</Subtask>
+        <Subtask ></Subtask>
       </CardContent>
     </Card>
   );
