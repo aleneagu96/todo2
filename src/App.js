@@ -9,7 +9,8 @@ function App() {
   const useStyles= makeStyles((theme) => ({
     appStyle:{
       backgroundColor: '#f2f5f3',
-      height:700,
+      height:'auto',
+      paddingBottom:30,
     
     },
   }));

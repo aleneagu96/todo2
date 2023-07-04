@@ -46,7 +46,7 @@ function List() {
     setEditedText(todos[currentIndex].text);
     setEditedPrio(todos[currentIndex].prio);
     setModalOpen(true);
-    
+
   };
 
 
@@ -62,7 +62,7 @@ function List() {
     handleUpdateText(currentTodo, editedText);
     setEditedDate(new Date().toLocaleString());
     handleCloseModal();
-    
+
   };
 
   const handleAddTodo = (todoText) => {
@@ -71,6 +71,7 @@ function List() {
       prio: 1,
       index: todos.length + 1,
       date: new Date().toLocaleString(),
+      subTasks: [],
     };
 
     setTodos((prevTodos) => [...prevTodos, newTodo]);
@@ -95,27 +96,27 @@ function List() {
   };
 
   const increasePrio = (newIndex, updatedPrio) => {
-    const update = todos.map((todo, index) => 
-      index === newIndex ? 
-      {...todo, prio: updatedPrio+1} : todo);
-      setEditedPrio(updatedPrio +1);
-      setTodos(update);
+    const update = todos.map((todo, index) =>
+      index === newIndex ?
+        { ...todo, prio: updatedPrio + 1 } : todo);
+    setEditedPrio(updatedPrio + 1);
+    setTodos(update);
   }
 
   const decreasePrio = (newIndex, updatedPrio) => {
-    const update = todos.map((todo, index) => 
-      index === newIndex ? 
-      {...todo, prio: updatedPrio-1} : todo);
-      setEditedPrio(updatedPrio -1);
-      setTodos(update);
-  }
- 
-  const handlePrioIncrease =() => {
-    increasePrio(currentTodo,editedPrio);
+    const update = todos.map((todo, index) =>
+      index === newIndex ?
+        { ...todo, prio: updatedPrio - 1 } : todo);
+    setEditedPrio(updatedPrio - 1);
+    setTodos(update);
   }
 
-  const handlePrioDecrease =() => {
-    decreasePrio(currentTodo,editedPrio);
+  const handlePrioIncrease = () => {
+    increasePrio(currentTodo, editedPrio);
+  }
+
+  const handlePrioDecrease = () => {
+    decreasePrio(currentTodo, editedPrio);
   }
 
   const handleAccordion = (newIndex) => {
@@ -158,10 +159,11 @@ function List() {
         handleClose={handleCloseModal}
         open={modalOpen}
         text={editedText}
-        prio={editedPrio}  
-        increasePrio={handlePrioIncrease}    
+        prio={editedPrio}
+        increasePrio={handlePrioIncrease}
         decreasePrio={handlePrioDecrease}
       />
+      
     </div>
   );
 }
