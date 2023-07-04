@@ -43,7 +43,7 @@ function List() {
   }));
 
   const classes = useStyles();
-
+``
   const [initialTodos, setInitialTodos] = useState(initialData);
   const [todos, setTodos] = useState(initialData);
   const [modalOpen, setModalOpen] = useState(false);
@@ -107,7 +107,7 @@ function List() {
   const handleDeleteTodo = () => {
     const update = todos.filter((todo, index) => index !== currentTodo);
     setTodos(update);
-  };
+    };
 
   const increasePrio = (newIndex, updatedPrio) => {
     const update = todos.map((todo, index) =>
@@ -182,7 +182,6 @@ function List() {
       </FormControl>
     </Box>
     <ButtonComponent onClick={handleSortReset} label="Reset Fillter" />
-
     </div>
     <div>
   {/* Render todos */}
